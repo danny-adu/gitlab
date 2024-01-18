@@ -1,0 +1,31 @@
+version: "3"
+networks:
+  gitea:
+    external: false
+services:
+  server:
+    # 指定gitea镜像及版本
+    image: gitea/gitea:1.15.0
+    # 指定容器别名
+    container_name: gitea
+    # 配置容器环境
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - DB_TYPE=sqlite3
+      - GITEA__database__DB_TYPE=sqlite3
+      - GITEA__database__PATH=/data/gitea/gitea.db
+    # 开机自启
+    restart: always
+    # 指定容器使用的网络
+    networks:
+      - gitea
+    # 配置挂载卷
+    volumes:
+      - ./data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    # 配置端口映射
+    ports:
+      - "3000:3000"
+      - "222:22"
