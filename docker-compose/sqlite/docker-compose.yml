@@ -22,7 +22,7 @@ services:
       - gitea
     # 配置挂载卷
     volumes:
-      - ./data:/data
+      - /data:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     # 配置端口映射
