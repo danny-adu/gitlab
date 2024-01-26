@@ -5,7 +5,7 @@ networks:
 services:
   server:
     # 指定gitea镜像及版本
-    image: gitea/gitea:1.15.0
+    image: gitea/gitea
     # 指定容器别名
     container_name: gitea
     # 配置容器环境

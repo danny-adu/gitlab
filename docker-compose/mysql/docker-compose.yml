@@ -6,7 +6,7 @@ networks:
 services:
   server:
     # 指定gitea镜像及版本
-    image: gitea/gitea:1.15.0
+    image: gitea/gitea
     # 指定容器别名
     container_name: gitea
     # 配置容器环境
@@ -25,7 +25,7 @@ services:
       - gitea
     # 配置挂载卷
     volumes:
-      - ./data:/data
+      - /data/gitea:/data:rw
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     # 配置端口映射
@@ -46,4 +46,4 @@ services:
     networks:
       - gitea
     volumes:
-      - ./mysql:/var/lib/mysql
+      - /data/mysql:/var/lib/mysql:rw
